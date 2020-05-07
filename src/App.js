@@ -44,7 +44,7 @@ function App() {
   );
   }
   */
-
+/** 
   class App extends React.Component{
       //dont have return 
       //state is object
@@ -81,5 +81,21 @@ function App() {
         </div>;
       }
   }
+*/
 
+class App extends React.Component {
+  state = {
+    isLoading :true,
+    movie:[]
+  };
+  componentDidMount(){
+    /**setTimeout(()=>{
+      this.setState({isLoading:false});
+    },6000)*/
+  }
+  render(){
+  const {isLoading} = this.state
+  return <div>{isLoading ? "Loading": "we are ready"}</div>
+  }
+}
 export default App;
