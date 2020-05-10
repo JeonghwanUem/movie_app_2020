@@ -1,4 +1,7 @@
 import React from 'react';
+import axios from 'axios';
+import { moveSyntheticComments } from 'typescript';
+import Movie from "./Movie";
 //import { isThrowStatement } from 'typescript';
 /**
 import PropTypes from "prop-types";
@@ -88,16 +91,30 @@ function test(){
 class App extends React.Component {
   state = {
     isLoading :true,
-    movie:[]
+    movies:[]
+  };
+  getMovies = async () => {
+    const {
+      data:
+      {
+      data:{ movies}
+      }
+    } =  await axios.get("https://yts-proxy.now.sh/list_movies.json?sort_by=rating");
+    console.log(movies);
+    this.setState({movies, isLoading:false});//movies:movies
   };
   componentDidMount(){
     /**setTimeout(()=>{
       this.setState({isLoading:false});
-    },6000)*/
+    },6000);*/
+    this.getMovies();
+    
   }
   render(){
-  const {isLoading} = this.state
-  return <div>{isLoading ? "Loading": "we are ready"}</div>
+  const {isLoading, movies} = this.state
+  return <div>{isLoading ? "Loading": movies.map(movie =>{
+    return <Movie key={movie.id} id={movie.id}  title={movie.title} summary={movie.summary} poster={movie.medium_cover_image} year={movie.year} />
+  })}</div>//this.state.movies.map()
   }
 }
 export default App;
