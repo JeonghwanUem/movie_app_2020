@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { moveSyntheticComments } from 'typescript';
-import Movie from "./Movie";
+import Movie from "./components/Movie";
 import "./App.css";
 //import { isThrowStatement } from 'typescript';
 /**
