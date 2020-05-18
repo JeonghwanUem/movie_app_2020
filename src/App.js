@@ -1,6 +1,9 @@
-import React from 'react';
-import { HashRouter, Route} from "react-router-dom";
-import {About as Potato} from "./routes/About";
+import React from "react";
+import { HashRouter, Route } from "react-router-dom";
+import Home from "./routes/Home";
+import About from "./routes/About";
+import Navigation from "./components/Navigation";
+import "./App.css";
 
 //import { isThrowStatement } from 'typescript';
 /**
@@ -86,10 +89,14 @@ function App() {
   }
 */
 
-function App(){
-  return <HashRouter>
-    <Route path ="/about" component={Potato}/>
-    </HashRouter>;
+function App() {
+  return (
+    <HashRouter>
+      <Navigation />
+      <Route path="/" exact={true} component={Home} />
+      <Route path="/about" component={About} />
+    </HashRouter>
+  );
 }
 
 export default App;
